@@ -1,0 +1,102 @@
+-- CREATE TABLES 
+
+CREATE TABLE actors( 
+Actor_id            NUMBER(9),
+A_First_Name        VARCHAR2(30),
+A_Surname           VARCHAR2(30),
+A_Gender            CHAR(1),
+A_Email             VARCHAR2(50),
+A_City              VARCHAR2(30),
+A_Country           VARCHAR2(15),
+A_Date_of_birth	    DATE);
+
+CREATE TABLE series( 
+Series_id         NUMBER(6),
+S_Title           VARCHAR2(50),
+Description       VARCHAR2(50),
+Episodes          NUMBER(3),
+Seasons           NUMBER(2),
+Year              DATE);
+
+CREATE TABLE casting(
+Actor_id           NUMBER(9),
+Series_id          NUMBER(6),
+Episode_id         NUMBER(9),
+Role               VARCHAR2(50));
+
+CREATE TABLE episode( 
+Episode_id       NUMBER(9),
+Series_id        NUMBER(6),
+Season           NUMBER(2),
+E_Title          VARCHAR2(50),
+Length           NUMBER(6));
+
+CREATE TABLE viewer(
+Viewer_id           NUMBER(9),
+V_First_Name        VARCHAR2(10),
+V_Surname           VARCHAR2(20),
+V_Gender            CHAR(1),
+V_Email             VARCHAR2(50),
+V_City              VARCHAR2(30),
+V_Country           VARCHAR2(35),
+V_Address           VARCHAR2(35),
+V_Date_of_birth	    DATE);
+
+CREATE TABLE viewership(
+Viewer_id       NUMBER(9),
+Episode_id      NUMBER(9),
+Series_id       NUMBER(6),
+Date_watched    DATE);
+
+---------------------------------------------------------
+
+-- SEQUENCES
+
+CREATE SEQUENCE seq_actors
+START WITH 100000001
+INCREMENT BY 1
+MINVALUE 100000001
+MAXVALUE 199999999
+NOCYCLE;
+
+CREATE SEQUENCE seq_series
+START WITH 100001
+INCREMENT BY 1
+MINVALUE 100001
+MAXVALUE 199999
+NOCYCLE;
+
+CREATE SEQUENCE seq_episodes
+START WITH 200000001
+INCREMENT BY 1
+MINVALUE 200000001
+MAXVALUE 399999999
+NOCYCLE;
+
+
+CREATE SEQUENCE seq_viewers
+START WITH 400000001
+INCREMENT BY 1
+MINVALUE 400000001
+MAXVALUE 699999999
+NOCYCLE;
+
+-----------------------------
+
+--NOT NULL
+
+ALTER TABLE actors
+ADD CONSTRAINT ck_actors
+CHECK (A_Surname IS NOT NULL and A_Email IS NOT NULL);
+
+ALTER TABLE series
+ADD CONSTRAINT ck_series
+CHECK (S_title is NOT NULL);
+
+ALTER TABLE episode
+ADD CONSTRAINT ck_episode
+CHECK (E_title is NOT NULL);
+
+ALTER TABLE viewer
+ADD CONSTRAINT ck_viewers
+CHECK (V_Surname IS NOT NULL and V_Email IS NOT NULL);

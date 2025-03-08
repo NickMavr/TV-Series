@@ -1,0 +1,306 @@
+a) 
+
+a1) SELECT * FROM actors;
+a2) SELECT * FROM series;
+a3) SELECT * FROM casting;
+a4) SELECT * FROM episode;
+a5) SELECT * FROM viewer;
+a6) SELECT * FROM viewership;
+
+b)
+
+SELECT Length, E_Title, Series_id
+FROM episode
+ORDER BY Length DESC;
+
+c)
+c1)
+SELECT A_First_Name, A_Surname, A_Country
+FROM actors
+WHERE A_Country = 'USA';
+
+c2)
+SELECT *
+FROM viewer
+WHERE V_Surname LIKE 'B%N';
+
+c3)
+SELECT *
+FROM viewer
+WHERE V_Country NOT IN 'GREECE';
+
+c4)
+SELECT viewer.V_First_Name, viewer.V_Surname, viewer.Viewer_id, viewership.Date_watched
+FROM viewer
+INNER JOIN viewership on viewer.Viewer_id=viewership.Viewer_id
+WHERE Date_watched BETWEEN '01-JAN-2019' AND '31-DEC-2021';
+
+d1)
+SELECT *
+FROM series 
+INNER JOIN episode ON series.Series_id=episode.Series_id;
+
+d2)
+SELECT *
+FROM casting 
+INNER JOIN series ON casting.Series_id=series.Series_id
+INNER JOIN actors ON casting.Actor_id=actors.Actor_id;
+
+d3)
+SELECT *
+FROM casting 
+INNER JOIN series ON casting.Series_id=series.Series_id
+INNER JOIN actors ON casting.Actor_id=actors.Actor_id
+INNER JOIN episode ON casting.Episode_id=episode.Episode_id;
+
+e1)
+SELECT a_first_name,a_surname FROM actors where a_surname LIKE 'C%E';
+
+e2)
+SELECT v_country,count(v_country) FROM viewer GROUP BY v_country;
+
+e3)
+SELECT
+    episode.Episode_id,
+    episode.E_Title,
+    COUNT(viewership.Viewer_id) AS ViewCount
+FROM
+    episode
+JOIN
+    viewership ON episode.Episode_id = viewership.Episode_id
+GROUP BY
+    episode.Episode_id, episode.E_Title
+ORDER BY
+    ViewCount DESC
+FETCH FIRST 1 ROW ONLY;
+
+e4)
+SELECT
+    series.Series_id,
+    series.S_Title,
+    COUNT(viewership.Viewer_id) AS ViewCount
+FROM
+    series
+JOIN
+    viewership ON series.Series_id = viewership.Series_id
+GROUP BY
+    series.Series_id, series.S_Title
+ORDER BY
+    ViewCount DESC
+FETCH FIRST 1 ROW ONLY;
+
+
+e5)
+SELECT
+    actors.Actor_id,
+    actors.A_Surname,
+    actors.A_First_Name,
+    series.S_Title
+FROM
+    actors
+JOIN
+    casting ON actors.Actor_id = casting.Actor_id
+JOIN
+    series ON casting.Series_id = series.Series_id
+ORDER BY
+    actors.A_Surname ASC, actors.A_First_Name ASC, actors.Actor_id ASC;
+
+e6)
+SELECT
+    actors.Actor_id,
+    actors.A_Surname,
+    actors.A_First_Name,
+    COUNT(DISTINCT casting.Series_id) AS SeriesCount
+FROM
+    actors
+JOIN
+    casting ON actors.Actor_id = casting.Actor_id
+GROUP BY
+    actors.Actor_id, actors.A_Surname, actors.A_First_Name
+ORDER BY
+    SeriesCount DESC
+FETCH FIRST 1 ROW ONLY;
+
+
+e7)
+SELECT
+    actors.Actor_id,
+    actors.A_Surname,
+    actors.A_First_Name,
+    COUNT(DISTINCT casting.Episode_id) AS EpisodeCount
+FROM
+    actors
+JOIN
+    casting ON actors.Actor_id = casting.Actor_id
+GROUP BY
+    actors.Actor_id, actors.A_Surname, actors.A_First_Name
+ORDER BY
+    EpisodeCount DESC
+FETCH FIRST 1 ROW ONLY;
+
+
+e8)
+SELECT S_Title FROM series ORDER BY Seasons DESC FETCH FIRST 1 ROW ONLY;
+
+e9)  
+SELECT S_Title FROM series ORDER BY Episodes DESC FETCH FIRST 1 ROW ONLY;
+
+
+e10)
+SELECT
+    COUNT(*) AS SeriesCount
+FROM
+    series
+WHERE
+    EXTRACT(Year FROM Year) BETWEEN 2000 AND 2009;
+
+e11)
+SELECT
+    Actor_id,
+    A_First_Name,
+    A_Surname,
+    A_Date_of_birth
+FROM
+    actors
+WHERE
+    EXTRACT(MONTH FROM A_Date_of_birth) = 7;
+
+e12)
+SELECT
+    COUNT(*) AS ActorCount
+FROM
+    actors
+LEFT JOIN
+    casting ON actors.Actor_id = casting.Actor_id
+WHERE
+    casting.Actor_id IS NULL;
+
+e13)
+SELECT
+    V_First_Name,
+    V_Surname,
+    V_Date_of_birth
+FROM
+    viewer
+WHERE
+    V_Gender = 'F'
+ORDER BY
+    V_Date_of_birth ASC
+FETCH FIRST 1 ROW ONLY;
+
+
+e14)
+SELECT
+    Viewer_id,
+    V_First_Name,
+    V_Surname,
+    V_Address
+FROM
+    viewer
+WHERE
+    UPPER(V_Address) LIKE '%SAINT%';
+
+e15)
+SELECT
+    series.S_Title,
+    AVG(episode.Length) AS AvgEpisodeLength
+FROM
+    series
+JOIN
+    episode ON series.Series_id = episode.Series_id
+GROUP BY
+    series.Series_id, series.S_Title
+ORDER BY
+    AvgEpisodeLength DESC;
+
+
+e16)
+SELECT
+    viewer.Viewer_id,
+    viewer.V_First_Name,
+    viewer.V_Surname,
+    COUNT(DISTINCT viewership.Episode_id) AS ECount
+FROM
+    viewer
+JOIN
+    viewership ON viewer.Viewer_id = viewership.Viewer_id
+GROUP BY
+    viewer.Viewer_id, viewer.V_First_Name, viewer.V_Surname
+ORDER BY
+    ECount DESC
+FETCH FIRST 1 ROW ONLY;
+
+e17)
+SELECT
+    viewer.Viewer_id,
+    viewer.V_First_Name,
+    viewer.V_Surname,
+    COUNT(DISTINCT viewership.Episode_id) AS ECount
+FROM
+    viewer
+JOIN
+    viewership ON viewer.Viewer_id = viewership.Viewer_id
+WHERE
+    UPPER(viewer.V_City) = 'THESSALONIKI'
+GROUP BY
+    viewer.Viewer_id, viewer.V_First_Name, viewer.V_Surname
+ORDER BY
+    ECount DESC
+FETCH FIRST 1 ROW ONLY;
+
+
+
+e18)
+WITH RankedSeries AS (
+    SELECT
+        viewer.V_Gender,
+        series.Series_id,
+        series.S_Title,
+        RANK() OVER (PARTITION BY viewer.V_Gender ORDER BY COUNT(viewership.Episode_id) DESC) AS SeriesRank
+    FROM
+        viewership 
+    JOIN
+        series ON viewership.Series_id = series.Series_id
+    JOIN
+        viewer ON viewership.Viewer_id = viewer.Viewer_id
+    GROUP BY
+        viewer.V_Gender, series.Series_id, series.S_Title
+)
+SELECT
+    Series_id,
+    S_Title,
+    V_Gender
+FROM
+    RankedSeries
+WHERE
+    SeriesRank = 1;
+
+
+e19)
+SELECT
+    Viewer_id,
+    V_First_Name,
+    V_Surname,
+    SUBSTR(UPPER(V_First_Name), 1, 4) || SUBSTR(UPPER(V_Surname), 1, 4) AS Username
+FROM
+    viewer;
+
+e20)
+SELECT
+    EXTRACT(YEAR FROM series.Year) AS ProductionYear,
+    SUM(episode.Length) AS TotalSeriesLength
+FROM
+    series
+JOIN
+    episode ON series.Series_id = episode.Series_id
+GROUP BY
+    EXTRACT(YEAR FROM series.Year)
+ORDER BY
+    ProductionYear;
+
+
+
+
+
+
+

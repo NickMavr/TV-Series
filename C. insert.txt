@@ -1,0 +1,374 @@
+--DATE
+
+ALTER SESSION SET
+NLS_DATE_FORMAT = 'DD-MON-YYYY'
+NLS_DATE_LANGUAGE='english';
+SELECT sysdate FROM dual;
+
+--INSERT ACTORS
+
+INSERT INTO actors
+VALUES (seq_actors.nextval,'BRYAN','CRANSTON','M','BCRANSTON@GMAIL.COM','NEW YORK','USA','07-MAR-1956');
+
+INSERT INTO actors
+VALUES (seq_actors.nextval,'AARON','PAUL','M','APAUL@GMAIL.COM','DETROIT','USA','27-AUG-1979');
+
+INSERT INTO actors
+VALUES (seq_actors.nextval,'ANNA','GUNN','F','AGUNN@HOTMAIL.COM','KANSAS','USA','11-AUG-1968');
+
+INSERT INTO actors
+VALUES (seq_actors.nextval,'BOB','ODENKIRK','M','BODENKIRK@HOTMAIL.COM','MIAMI','USA','07-MAR-1956');
+
+INSERT INTO actors
+VALUES (seq_actors.nextval,'RHEA','SEEHORN','F','RSEEHORN@GMAIL.COM','NEW YORK','USA','12-MAY-1972');
+
+INSERT INTO actors
+VALUES (seq_actors.nextval,'COURTENEY','COX','F','CCOX@HOTMAIL.COM','NEW YORK','USA','15-JUN-1964');
+
+INSERT INTO actors
+VALUES (seq_actors.nextval,'MATTHEW','PERRY','M','MPERRY@GMAIL.COM','NEW YORK','USA','07-AUG-1969');
+
+INSERT INTO actors
+VALUES (seq_actors.nextval,'MATT','LEBLANC','M','MLEBANC@GMAIL.COM','NEW YORK','USA','25-JUL-1967');
+
+INSERT INTO actors
+VALUES (seq_actors.nextval,'JULIA','LUIS-DREYFUS','F','JDREYFUS@GMAIL.COM','BOSTON','USA','13-JAN-1961');
+
+INSERT INTO actors
+VALUES (seq_actors.nextval,'IDRIS','ELBA','M','IELBA@GMAIL.COM','CHIGACO','USA','06-SEP-1972');
+
+INSERT INTO actors (Actor_id, A_First_Name, A_Surname, A_Gender, A_Email, A_City, A_Country, A_Date_of_birth)
+VALUES (seq_actors.nextval,'PEDRO','PASCAL','M','PPASCAL@HOTMAIL.COM','MIAMI','UNITED STATES','08-JUN-1989');
+
+INSERT INTO actors (Actor_id, A_First_Name, A_Surname, A_Gender, A_Email, A_City, A_Country, A_Date_of_birth)
+VALUES (seq_actors.nextval,'EMILIA','CLARKE','F','ECLARKE@HOTMAIL.COM','LONDON','ENGLAND','23-OCT-1986');
+
+INSERT INTO actors (Actor_id, A_First_Name, A_Surname, A_Gender, A_Email, A_City, A_Country, A_Date_of_birth)
+VALUES (seq_actors.nextval,'GIANCARLO','ESPOSITO','M','GESPOSITO@HOTMAIL.COM','MIAMI','UNITED STATES','26-APR-1958');
+
+INSERT INTO actors (Actor_id, A_First_Name, A_Surname, A_Gender, A_Email, A_City, A_Country, A_Date_of_birth)
+VALUES (seq_actors.nextval,'DOMINIC','WEST','M','DWEST@HOTMAIL.COM','NEW YORK','UNITED STATES','15-OCT-1969');
+
+INSERT INTO actors (Actor_id, A_First_Name, A_Surname, A_Gender, A_Email, A_City, A_Country, A_Date_of_birth)
+VALUES (seq_actors.nextval,'JONATHAN','PRYCE','M','JPRYCE@HOTMAIL.COM','HOLYWELL','WALES','01-JUN-1947');
+
+INSERT INTO actors (Actor_id, A_First_Name, A_Surname, A_Gender, A_Email, A_City, A_Country, A_Date_of_birth)
+VALUES (seq_actors.nextval,'MICHAEL','MANDO','M','MMANDO@HOTMAIL.COM','MIAMI','UNITED STATES','13-JUL-1981');
+
+INSERT INTO actors (Actor_id, A_First_Name, A_Surname, A_Gender, A_Email, A_City, A_Country, A_Date_of_birth)
+VALUES (seq_actors.nextval,'JENSEN','ACKLES','M','JACKLES@HOTMAIL.COM','BOSTON','UNITED STATES','15-JUL-1982');
+
+INSERT INTO actors (Actor_id, A_First_Name, A_Surname, A_Gender, A_Email, A_City, A_Country, A_Date_of_birth)
+VALUES (seq_actors.nextval,'JARED','PADALECKI','M','JPADALECKI@HOTMAIL.COM','ORLANDO','UNITED STATES','19-JUN-1979');
+
+INSERT INTO actors (Actor_id, A_First_Name, A_Surname, A_Gender, A_Email, A_City, A_Country, A_Date_of_birth)
+VALUES (seq_actors.nextval,'MICHAEL','POLANSKI','M','MPOLANSKI@HOTMAIL.COM','KRAKOW','POLAND','29-JUN-1992');
+
+
+
+--INSERT SERIES
+
+INSERT INTO series 
+VALUES( seq_series.nextval,'BREAKING BAD', 'DRAMA','62','05','3-FEB-2008');
+
+INSERT INTO series 
+VALUES( seq_series.nextval,'BETTER CALL SAUL', 'DRAMA','65','06','5-JAN-2015');
+
+INSERT INTO series 
+VALUES( seq_series.nextval,'THE WIRE', 'DRAMA','60','05','2-JUN-2002');
+
+INSERT INTO series 
+VALUES( seq_series.nextval,'FRIENDS', 'COMEDY','236','10','10-FEB-1994');
+
+INSERT INTO series 
+VALUES( seq_series.nextval,'SEINFELD', 'COMEDY','180','09','19-MAY-1989');
+
+INSERT INTO series 
+VALUES( seq_series.nextval,'NARCOS', 'DRAMA','30','02','25-MAY-2015');
+
+INSERT INTO series (Series_id, S_Title, Description, Episodes, Seasons, Year)
+VALUES( seq_series.nextval,'SUPERNATURAL', 'DRAMA','327','15','25-MAR-2005');
+
+INSERT INTO series (Series_id, S_Title, Description, Episodes, Seasons, Year)
+VALUES( seq_series.nextval,'THE CROWN', 'DRAMA','70','06','12-DEC-2016');
+
+INSERT INTO series (Series_id, S_Title, Description, Episodes, Seasons, Year)
+VALUES( seq_series.nextval,'GAME OF THRONES', 'DRAMA','73','08','05-FEB-2011');
+
+INSERT INTO series (Series_id, S_Title, Description, Episodes, Seasons, Year)
+VALUES( seq_series.nextval,'JOEY', 'COMEDY','80','05','15-JUL-2004');
+
+INSERT INTO series (Series_id, S_Title, Description, Episodes, Seasons, Year)
+VALUES( seq_series.nextval,'THE LAST OF US', 'DRAMA','08','01','20-FEB-2023');
+
+
+--INSERT EPISODE
+
+INSERT INTO episode (Episode_id, Series_id, Season, E_Title, Length)
+VALUES( seq_episodes.nextval,'100001', '05','OZYMANDIAS','3120');
+
+INSERT INTO episode (Episode_id, Series_id, Season, E_Title, Length)
+VALUES( seq_episodes.nextval,'100001', '03','SUNSET','3150');
+
+INSERT INTO episode (Episode_id, Series_id, Season, E_Title, Length)
+VALUES( seq_episodes.nextval,'100002', '06','SAUL GONE','3450');
+
+INSERT INTO episode (Episode_id, Series_id, Season, E_Title, Length)
+VALUES( seq_episodes.nextval,'100002', '02','NAILED','3215');
+
+INSERT INTO episode (Episode_id, Series_id, Season, E_Title, Length)
+VALUES( seq_episodes.nextval,'100003', '02','BAD DREAMS','3152');
+
+INSERT INTO episode (Episode_id, Series_id, Season, E_Title, Length)
+VALUES( seq_episodes.nextval,'100003', '04','MISGIVINGS','3650');
+
+INSERT INTO episode (Episode_id, Series_id, Season, E_Title, Length)
+VALUES( seq_episodes.nextval,'100004', '09','THE ONE WITH THE MUGGING','1500');
+
+INSERT INTO episode (Episode_id, Series_id, Season, E_Title, Length)
+VALUES( seq_episodes.nextval,'100004', '03','THE ONE AT THE BEACH','1453');
+
+INSERT INTO episode (Episode_id, Series_id, Season, E_Title, Length)
+VALUES( seq_episodes.nextval,'100004', '05','THE ONE WITH THE BALL','1380');
+
+INSERT INTO episode (Episode_id, Series_id, Season, E_Title, Length)
+VALUES( seq_episodes.nextval,'100005', '03','HELLO WORLD','1400');
+
+INSERT INTO episode (Episode_id, Series_id, Season, E_Title, Length)
+VALUES( seq_episodes.nextval,'100006', '01','DESCENSO','3250');
+
+INSERT INTO episode (Episode_id, Series_id, Season, E_Title, Length)
+VALUES( seq_episodes.nextval,'100007', '01','WENDIGO','3152');
+
+INSERT INTO episode (Episode_id, Series_id, Season, E_Title, Length)
+VALUES( seq_episodes.nextval,'100007', '04','MONSTER MOVIE','3050');
+
+INSERT INTO episode (Episode_id, Series_id, Season, E_Title, Length)
+VALUES( seq_episodes.nextval,'100008', '03','WELCOME BACK','3235');
+
+INSERT INTO episode (Episode_id, Series_id, Season, E_Title, Length)
+VALUES( seq_episodes.nextval,'100009', '01','WINTER IS COMING','3133');
+
+INSERT INTO episode (Episode_id, Series_id, Season, E_Title, Length)
+VALUES( seq_episodes.nextval,'100009', '03','THE CLIMB','3124');
+
+INSERT INTO episode (Episode_id, Series_id, Season, E_Title, Length)
+VALUES( seq_episodes.nextval,'100010', '01','JOEY IS BACK','1244');
+
+INSERT INTO episode (Episode_id, Series_id, Season, E_Title, Length)
+VALUES( seq_episodes.nextval,'100011', '01','LOOK FOR THE LIGHT','3424');
+
+INSERT INTO episode (Episode_id, Series_id, Season, E_Title, Length)
+VALUES( seq_episodes.nextval,'100011', '01','WHEN WE ARE NEEDED','3424');
+
+
+-- INSERT CASTING
+
+INSERT INTO casting (actor_id, episode_id, series_id, role)
+VALUES('100000001','200000001', '100001','WALTER WHITE');
+
+INSERT INTO casting (actor_id, episode_id, series_id, role)
+VALUES('100000001','200000002', '100001','WALTER WHITE');
+
+INSERT INTO casting (actor_id, episode_id, series_id, role)
+VALUES('100000001','200000003','100002','WALTER WHITE');
+
+INSERT INTO casting (actor_id, episode_id, series_id, role)
+VALUES('100000002','200000001', '100001','JESSE PINKMAN');
+
+INSERT INTO casting (actor_id, episode_id, series_id, role)
+VALUES('100000002','200000003', '100002','JESSE PINKMAN');
+
+INSERT INTO casting (actor_id, episode_id, series_id, role)
+VALUES('100000003','200000001', '100001','SKYLER WHITE');
+
+INSERT INTO casting (actor_id, episode_id, series_id, role)
+VALUES('100000004','200000002', '100001','SAUL GOODMAN');
+
+INSERT INTO casting (actor_id, episode_id, series_id, role)
+VALUES('100000004','200000003', '100002','SAUL GOODMAN');
+
+INSERT INTO casting (actor_id, episode_id, series_id, role)
+VALUES('100000004','200000004', '100002','SAUL GOODMAN');
+
+INSERT INTO casting (actor_id, episode_id, series_id, role)
+VALUES('100000005','200000003', '100002','KIM WEXLER');
+
+INSERT INTO casting (actor_id, episode_id, series_id, role)
+VALUES('100000006','200000007', '100004','MONICA GELLER');
+
+INSERT INTO casting (actor_id, episode_id, series_id, role)
+VALUES('100000006','200000010', '100005','MERYL WHITE');
+
+INSERT INTO casting (actor_id, episode_id, series_id, role)
+VALUES('100000007','200000007', '100004','CHANDLER BING');
+
+INSERT INTO casting (actor_id, episode_id, series_id, role)
+VALUES('100000008','200000007', '100004','JOEY TRIBBIANI');
+
+INSERT INTO casting (actor_id, episode_id, series_id, role)
+VALUES('100000008','200000017', '100010','JOEY TRIBBIANI');
+
+INSERT INTO casting (actor_id, episode_id, series_id, role)
+VALUES('100000009','200000010', '100005','ELAINE BENES');
+
+INSERT INTO casting (actor_id, episode_id, series_id, role)
+VALUES('100000010','200000005', '100003','STRINGER BELL');
+
+INSERT INTO casting (actor_id, episode_id, series_id, role)
+VALUES('100000011','200000011', '100006','JAVIER PENA');
+
+INSERT INTO casting (actor_id, episode_id, series_id, role)
+VALUES('100000011','200000015', '100009','OBERRYN MARTEL');
+
+INSERT INTO casting (actor_id, episode_id, series_id, role)
+VALUES('100000011','200000016', '100009','OBERRYN MARTEL');
+
+INSERT INTO casting (actor_id, episode_id, series_id, role)
+VALUES('100000011','200000018', '100011','JOEL');
+
+INSERT INTO casting (actor_id, episode_id, series_id, role)
+VALUES('100000011','200000019', '100011','JOEL');
+
+INSERT INTO casting (actor_id, episode_id, series_id, role)
+VALUES('100000012','200000016', '100009','KHALEESI');
+
+INSERT INTO casting (actor_id, episode_id, series_id, role)
+VALUES('100000013','200000001', '100001','GUS FRING');
+
+INSERT INTO casting (actor_id, episode_id, series_id, role)
+VALUES('100000014','200000005', '100003','JIMMY MCNULTY');
+
+INSERT INTO casting (actor_id, episode_id, series_id, role)
+VALUES('100000015','200000014', '100008','PRINCE PHILLIP');
+
+INSERT INTO casting (actor_id, episode_id, series_id, role)
+VALUES('100000016','200000001', '100002','NACHO VARGA');
+
+INSERT INTO casting (actor_id, episode_id, series_id, role)
+VALUES('100000017','200000012', '100007','DEAN WINCHESTER');
+
+INSERT INTO casting (actor_id, episode_id, series_id, role)
+VALUES('100000018','200000012', '100007','SAM WINCHESTER');
+
+INSERT INTO casting (actor_id, episode_id, series_id, role)
+VALUES('100000018','200000013', '100007','SAM WINCHESTER');
+
+
+
+
+
+-- INSERT VIEWER
+
+INSERT INTO viewer (viewer_id, V_First_Name, V_Surname, V_Gender, V_Email, V_City, V_Country, V_Address, V_Date_of_birth)
+VALUES(seq_viewers.nextval,'JOHN','BROWN','M','JBROWN@GMAIL.COM','LONDON','ENGLAND','SAINT GEORGE 5','20-NOV-1985');
+
+INSERT INTO viewer (viewer_id, V_First_Name, V_Surname, V_Gender, V_Email, V_City, V_Country, V_Address, V_Date_of_birth)
+VALUES(seq_viewers.nextval,'MICHAEL','BOWEN','M','MBOWEN@GMAIL.COM','MANCHESTER','ENGLAND','AVEY ROAD 10','13-DEC-1992');
+
+INSERT INTO viewer (viewer_id, V_First_Name, V_Surname, V_Gender, V_Email, V_City, V_Country, V_Address, V_Date_of_birth)
+VALUES(seq_viewers.nextval,'KEAN','BRYANT','M','KBRYANT@GMAIL.COM','NEW YORK','USA','LINCON 24','23-FEB-1975');
+
+INSERT INTO viewer (viewer_id, V_First_Name, V_Surname, V_Gender, V_Email, V_City, V_Country, V_Address, V_Date_of_birth)
+VALUES(seq_viewers.nextval,'GEORGE','PAPADOPOULOS','M','GPAPADO@GMAIL.COM','THESSALONIKI','GREECE','EGNATIAS 50','13-JUL-1994');
+
+INSERT INTO viewer (viewer_id, V_First_Name, V_Surname, V_Gender, V_Email, V_City, V_Country, V_Address, V_Date_of_birth)
+VALUES(seq_viewers.nextval,'NICK','JARMUS','M','NJARMUS@HOTMAIL.COM','LONDON','ENGLAND','SAINT GEORGE 213','20-AUG-1959');
+
+INSERT INTO viewer (viewer_id, V_First_Name, V_Surname, V_Gender, V_Email, V_City, V_Country, V_Address, V_Date_of_birth)
+VALUES(seq_viewers.nextval,'JOHN','DUNCAN','M','JDUNCAN@GMAIL.COM','NEW YORK','USA','KENNEDY 213','20-JAN-1999');
+
+INSERT INTO viewer (viewer_id, V_First_Name, V_Surname, V_Gender, V_Email, V_City, V_Country, V_Address, V_Date_of_birth)
+VALUES(seq_viewers.nextval,'GIANNIS','KAKOGLOU','M','GKAKOGLOU@GMAIL.COM','THESSALONIKI','GREECE','ARISTOTELOUS 20','12-NOV-1986');
+
+INSERT INTO viewer (viewer_id, V_First_Name, V_Surname, V_Gender, V_Email, V_City, V_Country, V_Address, V_Date_of_birth)
+VALUES(seq_viewers.nextval,'JONATHAN','BANCHERO','M','JBANCHERO@GMAIL.COM','ROME','ITALY','VIA FLAVIA 23','13-SEP-1981');
+
+INSERT INTO viewer (viewer_id, V_First_Name, V_Surname, V_Gender, V_Email, V_City, V_Country, V_Address, V_Date_of_birth)
+VALUES(seq_viewers.nextval,'CHRISTOS','TJORTJIS','M','CTJORTJIS@HOTMAIL.COM','THESSALONIKI','GREECE','ANTONIOU KAMARA 5','20-NOV-1979');
+
+INSERT INTO viewer (viewer_id, V_First_Name, V_Surname, V_Gender, V_Email, V_City, V_Country, V_Address, V_Date_of_birth)
+VALUES(seq_viewers.nextval,'MICHEL','TOONEY','F','MTOONEY@HOTMAIL.COM','NEW YORK','USA','KENNEDY 254','02-NOV-1985');
+
+INSERT INTO viewer (viewer_id, V_First_Name, V_Surname, V_Gender, V_Email, V_City, V_Country, V_Address, V_Date_of_birth)
+VALUES(seq_viewers.nextval,'HAYLE','BAY','F','HBAY@HOTMAIL.COM','BOSTON','USA','KENNEDY 235','15-JAN-1969');
+
+INSERT INTO viewer (viewer_id, V_First_Name, V_Surname, V_Gender, V_Email, V_City, V_Country, V_Address, V_Date_of_birth)
+VALUES(seq_viewers.nextval,'DIMITRA','PAPADOULOU','F','DPAPA@GMAIL.COM','THESSALONIKI','GREECE','KASSANDROU 23','04-NOV-1998');
+
+INSERT INTO viewer (viewer_id, V_First_Name, V_Surname, V_Gender, V_Email, V_City, V_Country, V_Address, V_Date_of_birth)
+VALUES(seq_viewers.nextval,'GEORGIA','DIMITRIADOU','F','GDIMITRIADOU@GMAIL.COM','ATHENS','GREECE','PAPANDREOU 123','25-JUL-1980');
+
+INSERT INTO viewer (viewer_id, V_First_Name, V_Surname, V_Gender, V_Email, V_City, V_Country, V_Address, V_Date_of_birth)
+VALUES(seq_viewers.nextval,'HILARY','DUFF','F','HDUFF@GMAIL.COM','LONDON','ENGLAND','SAINT GEORGE 50','11-DEC-1978');
+
+INSERT INTO viewer (viewer_id, V_First_Name, V_Surname, V_Gender, V_Email, V_City, V_Country, V_Address, V_Date_of_birth)
+VALUES(seq_viewers.nextval,'MONICA','KUBRICK','F','MKUBRICK@GMAIL.COM','MIAMI','USA','ROOSVELT 50','15-NOV-1992');
+
+
+
+-- INSERT VIEWERSHIP
+
+INSERT INTO viewership (viewer_id, episode_id, series_id, date_watched)
+VALUES('400000001','200000001','100001','15-JAN-2020');
+
+INSERT INTO viewership (viewer_id, episode_id, series_id, date_watched)
+VALUES('400000002','200000002','100001','12-MAY-2009');
+
+INSERT INTO viewership (viewer_id, episode_id, series_id, date_watched)
+VALUES('400000002','200000003','100002','05-MAR-2022');
+
+INSERT INTO viewership (viewer_id, episode_id, series_id, date_watched)
+VALUES('400000003','200000005','100003','25-DEC-2015');
+
+INSERT INTO viewership (viewer_id, episode_id, series_id, date_watched)
+VALUES('400000003','200000006','100003','17-AUG-2019');
+
+INSERT INTO viewership (viewer_id, episode_id, series_id, date_watched)
+VALUES('400000004','200000007','100004','03-JAN-2020');
+
+INSERT INTO viewership (viewer_id, episode_id, series_id, date_watched)
+VALUES('400000004','200000010','100005','09-JUN-2018');
+
+INSERT INTO viewership (viewer_id, episode_id, series_id, date_watched)
+VALUES('400000004','200000011','100006','10-JUL-2017');
+
+INSERT INTO viewership (viewer_id, episode_id, series_id, date_watched)
+VALUES('400000005','200000012','100007','01-OCT-2023');
+
+INSERT INTO viewership (viewer_id, episode_id, series_id, date_watched)
+VALUES('400000006','200000013','100007','09-SEP-2020');
+
+INSERT INTO viewership (viewer_id, episode_id, series_id, date_watched)
+VALUES('400000006','200000014','100008','05-FEB-2019');
+
+INSERT INTO viewership (viewer_id, episode_id, series_id, date_watched)
+VALUES('400000007','200000015','100009','06-JAN-2016');
+
+INSERT INTO viewership (viewer_id, episode_id, series_id, date_watched)
+VALUES('400000008','200000017','100010','02-FEB-2020');
+
+INSERT INTO viewership (viewer_id, episode_id, series_id, date_watched)
+VALUES('400000009','200000018','100011','19-APR-2018');
+
+INSERT INTO viewership (viewer_id, episode_id, series_id, date_watched)
+VALUES('400000010','200000019','100011','18-NOV-2014');
+
+INSERT INTO viewership (viewer_id, episode_id, series_id, date_watched)
+VALUES('400000011','200000019','100011','17-MAR-2019');
+
+INSERT INTO viewership (viewer_id, episode_id, series_id, date_watched)
+VALUES('400000011','200000001','100001','25-DEC-2022');
+
+INSERT INTO viewership (viewer_id, episode_id, series_id, date_watched)
+VALUES('400000012','200000010','100005','13-AUG-2017');
+
+INSERT INTO viewership (viewer_id, episode_id, series_id, date_watched)
+VALUES('400000013','200000004','100002','08-JAN-2022');
+
+INSERT INTO viewership (viewer_id, episode_id, series_id, date_watched)
+VALUES('400000014','200000008','100004','20-DEC-2023');
+
+INSERT INTO viewership (viewer_id, episode_id, series_id, date_watched)
+VALUES('400000015','200000019','100011','20-DEC-2023');
+

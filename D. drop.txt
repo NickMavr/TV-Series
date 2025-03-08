@@ -1,0 +1,144 @@
+-- DROP
+
+----------------------------------------
+
+--- DROP CHECK CONSTRAINTS
+
+ALTER TABLE actors
+DROP CONSTRAINT ck_actors;
+
+ALTER TABLE series
+DROP CONSTRAINT ck_series;
+
+ALTER TABLE episode
+DROP CONSTRAINT ck_episode;
+
+ALTER TABLE viewer
+DROP CONSTRAINT ck_viewers;
+
+---------------------------------------
+
+--- DROP FK CONSTRAINTS
+
+ALTER TABLE casting
+DROP CONSTRAINT fk_actor_id;
+
+ALTER TABLE casting
+DROP CONSTRAINT fk_series_id;
+
+ALTER TABLE casting
+DROP CONSTRAINT fk_episode_id;
+
+ALTER TABLE episode
+DROP CONSTRAINT fk_episode_series_id;
+
+ALTER TABLE viewership
+DROP CONSTRAINT fk_viewer_id;
+
+ALTER TABLE viewership
+DROP CONSTRAINT fk_viewership_series_id;
+
+ALTER TABLE viewership
+DROP CONSTRAINT fk_viewership_episode_id;
+
+--------------------------------------------
+
+
+--- DROP UK CONSTRAINTS
+
+ALTER TABLE viewer 
+DROP CONSTRAINT uk_viewer;
+
+ALTER TABLE actors 
+DROP CONSTRAINT uk_actors;
+
+--------------------------------------------
+
+--- DROP PK CONSTRAINTS
+
+ALTER TABLE viewer 
+DROP CONSTRAINT pk_viewer_id;
+
+ALTER TABLE episode
+DROP CONSTRAINT pk_episode_id;
+
+ALTER TABLE series
+DROP CONSTRAINT pk_series_id;
+
+ALTER TABLE actors
+DROP CONSTRAINT pk_actor_id;
+
+--------------------------------------------
+
+--- DROP CHECK CONSTRAINTS 
+
+ALTER TABLE episode 
+DROP CONSTRAINT ck_length;
+
+ALTER TABLE viewer
+DROP CONSTRAINT ck_V_address;
+
+ALTER TABLE episode
+DROP CONSTRAINT ck_E_title;
+
+ALTER TABLE series
+DROP CONSTRAINT ck_description;
+
+ALTER TABLE series
+DROP CONSTRAINT ck_S_title;
+
+ALTER TABLE viewer
+DROP CONSTRAINT ck_V_country;
+
+ALTER TABLE viewer
+DROP CONSTRAINT ck_V_city;
+
+ALTER TABLE actors
+DROP CONSTRAINT ck_A_country;
+
+ALTER TABLE actors
+DROP CONSTRAINT ck_A_city;
+
+ALTER TABLE viewer
+DROP CONSTRAINT ck_V_surname;
+
+ALTER TABLE viewer
+DROP CONSTRAINT ck_V_first_name;
+
+ALTER TABLE actors
+DROP CONSTRAINT ck_A_surname;
+
+ALTER TABLE actors
+DROP CONSTRAINT ck_A_first_name;
+
+ALTER TABLE viewer
+DROP CONSTRAINT ck_viewer_V_gender;
+
+ALTER TABLE actors
+DROP CONSTRAINT ck_actors_A_gender;
+
+
+--------------------------
+
+DROP SEQUENCE seq_actors;
+
+DROP SEQUENCE seq_series;
+
+DROP SEQUENCE seq_episodes;
+
+DROP SEQUENCE seq_viewers;
+
+-------------------------
+
+
+DROP TABLE actors;
+
+DROP TABLE series;
+
+DROP TABLE casting;
+
+DROP TABLE episode;
+
+DROP TABLE viewer;
+
+DROP TABLE viewership;

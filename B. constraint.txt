@@ -1,0 +1,146 @@
+--PRIMARY KEYS
+
+ALTER TABLE actors
+ADD CONSTRAINT pk_actor_id
+PRIMARY KEY (actor_id);
+
+ALTER TABLE series
+ADD CONSTRAINT pk_series_id
+PRIMARY KEY (series_id);
+
+ALTER TABLE episode
+ADD CONSTRAINT pk_episode_id
+PRIMARY KEY (episode_id);
+
+ALTER TABLE viewer
+ADD CONSTRAINT pk_viewer_id
+PRIMARY KEY (viewer_id);
+
+--FOREIGN KEYS
+
+ALTER TABLE casting
+ADD CONSTRAINT fk_actor_id
+FOREIGN KEY (actor_id)
+REFERENCES actors (actor_id);
+
+ALTER TABLE casting
+ADD CONSTRAINT fk_series_id
+FOREIGN KEY (series_id)
+REFERENCES series (series_id);
+
+ALTER TABLE casting
+ADD CONSTRAINT fk_episode_id
+FOREIGN KEY (episode_id)
+REFERENCES episode (episode_id);
+
+ALTER TABLE episode
+ADD CONSTRAINT fk_episode_series_id
+FOREIGN KEY (series_id)
+REFERENCES series (series_id);
+
+ALTER TABLE viewership
+ADD CONSTRAINT fk_viewer_id
+FOREIGN KEY (viewer_id)
+REFERENCES viewer (viewer_id);
+
+ALTER TABLE viewership
+ADD CONSTRAINT fk_viewership_series_id
+FOREIGN KEY (series_id)
+REFERENCES series (series_id);
+
+ALTER TABLE viewership
+ADD CONSTRAINT fk_viewership_episode_id
+FOREIGN KEY (episode_id)
+REFERENCES episode (episode_id);
+
+--UNIQUE KEYS
+
+ALTER TABLE actors
+ADD CONSTRAINT uk_actors
+UNIQUE (A_email);
+
+ALTER TABLE viewer
+ADD CONSTRAINT uk_viewer
+UNIQUE (V_email);
+
+--CHECK CONSTRAINTS
+
+ALTER TABLE actors
+ADD CONSTRAINT ck_actors_A_gender 
+CHECK (A_gender IN ('F','M','O'));
+
+ALTER TABLE viewer 
+ADD CONSTRAINT ck_viewer_V_gender 
+CHECK (V_gender IN ('F','M','O'));
+
+ALTER TABLE actors
+ADD CONSTRAINT ck_A_first_name
+CHECK (A_first_name = UPPER(A_first_name));
+
+ALTER TABLE actors
+ADD CONSTRAINT ck_A_surname
+CHECK (A_surname = UPPER(A_surname));
+
+ALTER TABLE viewer
+ADD CONSTRAINT ck_V_first_name
+CHECK (V_first_name = UPPER(V_first_name));
+
+ALTER TABLE viewer
+ADD CONSTRAINT ck_V_surname
+CHECK (V_surname = UPPER(V_surname));
+
+ALTER TABLE actors
+ADD CONSTRAINT ck_A_city
+CHECK (A_city = UPPER(A_city));
+
+ALTER TABLE actors
+ADD CONSTRAINT ck_A_country
+CHECK (A_country = UPPER(A_country));
+
+ALTER TABLE viewer
+ADD CONSTRAINT ck_V_city
+CHECK (V_city = UPPER(V_city));
+
+ALTER TABLE viewer
+ADD CONSTRAINT ck_V_country
+CHECK (V_country = UPPER(V_country));
+
+ALTER TABLE series
+ADD CONSTRAINT ck_S_title
+CHECK (S_title = UPPER(S_title));
+
+ALTER TABLE series
+ADD CONSTRAINT ck_description
+CHECK (description = UPPER(description));
+
+ALTER TABLE episode
+ADD CONSTRAINT ck_E_title
+CHECK (E_title = UPPER(E_title));
+
+ALTER TABLE viewer
+ADD CONSTRAINT ck_V_address
+CHECK (V_address = UPPER(V_address));
+
+ALTER TABLE episode
+ADD CONSTRAINT ck_length
+CHECK (length>0);
+
+-- DEFAULTS
+
+ALTER TABLE actors
+MODIFY A_gender CHAR(1) DEFAULT 'F';
+
+ALTER TABLE actors
+MODIFY A_city VARCHAR2(30) DEFAULT 'NEW YORK';
+
+ALTER TABLE actors
+MODIFY A_country VARCHAR2(15) DEFAULT 'USA';
+
+ALTER TABLE viewer
+MODIFY V_gender CHAR(1) DEFAULT 'F';
+
+ALTER TABLE viewer
+MODIFY V_city VARCHAR2(30) DEFAULT 'LONDONG';
+
+ALTER TABLE viewer
+MODIFY V_country VARCHAR2(15) DEFAULT 'ENGLAND'
